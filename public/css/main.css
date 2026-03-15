@@ -1,28 +1,178 @@
-html, body {
-    background-color: lightblue;
-    font-family: Arial, Helvetica, sans-serif;
+/* =========================
+   GLOBAL RESET
+========================= */
+
+* {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            display: inline;
-            margin: 15px;
-        }
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f6f9;
+    color: #333;
+}
 
-            &:hover {
-                color: #0066cc;
-            }
-        }
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    background-color: #0d2a52;
+    padding: 1rem 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+main {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+main h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #0d2a52;
+}
+
+main h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+main p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+
+/* =========================
+   LOGO IMAGE
+========================= */
+
+.main-logo {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background-color: #0d2a52;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 768px) {
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
+
+    main {
+        padding: 1.5rem;
+    }
+
+    main h1 {
+        font-size: 2rem;
+    }
+
+    main h2 {
+        font-size: 1.3rem;
+    }
+
+}
+
+/* =========================
+   ORGANIZATION LIST
+========================= */
+
+main ul {
+    list-style: none;
+    margin-top: 2rem;
+    padding: 0;
+}
+
+main ul li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    font-size: 1rem;
+}
+
+main ul li strong {
+    color: #0d2a52;
+}
+
+/* Organization logos */
+
+main ul li img {
+    width: 60px;
+    height: auto;
+}
+
+/* =========================
+   RESPONSIVE IMPROVEMENT
+========================= */
+
+@media (max-width: 600px) {
+
+    main ul li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    main ul li img {
+        width: 80px;
+    }
+
 }
