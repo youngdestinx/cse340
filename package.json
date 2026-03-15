@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/youngdestinx/cse340#readme",
   "dependencies": {
+    "ejs": "^5.0.1",
     "express": "^5.2.1"
   },
   "devDependencies": {
