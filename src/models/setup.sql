@@ -17,3 +17,45 @@ VALUES
 ('BrightFuture Builders', 'A nonprofit focused on improving communityinfrastructure through sustainable construction projects.', 'info@brightfuturebuilders.org', 'brightfuture-logo.png'),
 ('GreenHarvest Growers', 'An urban farming collective promoting food sustainability and education in local neighborhoods', 'contact@greenharvest.org', 'greenharvest-logo.png'),
 ('UnityServe Volunteers', 'a volunteer coordination group supporting local charities and service initiatives', 'hello@unityserve.org', 'unityserve-logo.png');
+
+
+-- =======================================
+-- Service_Projects Table
+-- =======================================
+CREATE TABLE service_projects (
+    project_id SERIAL PRIMARY KEY,
+    organization_id INT NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    location VARCHAR(150),
+    date DATE NOT NULL,
+    CONSTRAINT fk_organization
+        FOREIGN KEY(organization_id)
+        REFERENCES organization(organization_id)
+        ON DELETE CASCADE
+);
+
+
+-- =======================================
+-- Insert sample data: Service_Projects
+-- =======================================
+INSERT INTO service_projects (organization_id, title, description, location, date) VALUES
+(1, 'School Renovation', 'Renovating classrooms for better learning', 'Lagos Mainland', '2026-04-10'),
+(1, 'Bridge Construction', 'Building a pedestrian bridge', 'Ikorodu', '2026-05-15'),
+(1, 'Water Supply Project', 'Installing clean water systems', 'Badagry', '2026-06-01'),
+(1, 'Road Repair Initiative', 'Fixing damaged community roads', 'Yaba', '2026-06-20'),
+(1, 'Community Housing Build', 'Constructing low-cost housing', 'Epe', '2026-07-05');
+
+INSERT INTO service_projects (organization_id, title, description, location, date) VALUES
+(2, 'Urban Garden Setup', 'Creating community gardens', 'Surulere', '2026-04-12'),
+(2, 'Farmers Training Program', 'Training locals on sustainable farming', 'Agege', '2026-05-10'),
+(2, 'School Farming Project', 'Teaching students farming skills', 'Ikeja', '2026-05-25'),
+(2, 'Composting Initiative', 'Promoting organic waste recycling', 'Lekki', '2026-06-18'),
+(2, 'Food Distribution Drive', 'Providing fresh produce to families', 'Ajah', '2026-07-02');
+
+INSERT INTO service_projects (organization_id, title, description, location, date) VALUES
+(3, 'Charity Outreach', 'Supporting orphanages', 'Victoria Island', '2026-04-08'),
+(3, 'Medical Volunteer Program', 'Free health checkups', 'Mushin', '2026-05-05'),
+(3, 'School Supplies Donation', 'Providing books and materials', 'Oshodi', '2026-05-22'),
+(3, 'Community Cleanup', 'Environmental sanitation project', 'Festac', '2026-06-10'),
+(3, 'Youth Mentorship Program', 'Guiding young people', 'Alimosho', '2026-07-01');
