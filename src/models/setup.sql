@@ -59,3 +59,69 @@ INSERT INTO service_projects (organization_id, title, description, location, dat
 (3, 'School Supplies Donation', 'Providing books and materials', 'Oshodi', '2026-05-22'),
 (3, 'Community Cleanup', 'Environmental sanitation project', 'Festac', '2026-06-10'),
 (3, 'Youth Mentorship Program', 'Guiding young people', 'Alimosho', '2026-07-01');
+
+
+
+-- =======================================
+-- Categories Table
+-- =======================================
+CREATE TABLE categories (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+
+-- =======================================
+-- Insert sample data: Categories
+-- =======================================
+INSERT INTO categories (name)
+VALUES 
+('Environmental'),
+('Educational'),
+('Community Service'),
+('Health and Wellness');
+
+
+
+-- =======================================
+-- Project_Categories Table
+-- =======================================
+CREATE TABLE project_categories (
+    project_id INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (project_id, category_id),
+    FOREIGN KEY (project_id)
+        REFERENCES service_projects(project_id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (category_id)
+        REFERENCES categories(category_id)
+        ON DELETE CASCADE
+);
+
+
+-- =======================================
+-- Insert sample data: Projects_Categories
+-- =======================================
+INSERT INTO project_categories (project_id, category_id)
+VALUES
+-- Environmental (1)
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(14, 1),
+-- Educational (2)
+(1, 2),
+(8, 2),
+(13, 2),
+(15, 2),
+-- Community Service (3)
+(2, 3),
+(4, 3),
+(5, 3),
+(11, 3),
+(13, 3),
+-- Health and Wellness (4)
+(3, 4),
+(10, 4),
+(12, 4);
