@@ -3,16 +3,16 @@
     <h1><%= title %></h1>
     <p> Upcoming Service Projects</p>
     <ul>
-            <% projects.forEach(project => { %>
-                <li><%= new Date(project.date).toLocaleString('en-NG', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    }) %>:
-                    <strong><%= project.title %></strong> <em>(<%= project.organization %>)</em> 
-                </li>
-            <% }); %>
+        <% projects.forEach(project => { %>
+            <li><%= new Date(project.date).toLocaleString('en-NG', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }) %>:
+                <strong><%= project.title %></strong> <em>(<%= project.organization %>)</em> 
+            </li>
+        <% }); %>
     </ul>
 </main>
 <%- include('partials/footer') %>
