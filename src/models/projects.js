@@ -67,7 +67,7 @@ const getProjectDetails = async (projectId) => {
         p.location,
         p.organization_id,
         o.name AS organization_name
-    FROM public.service_projects p
+      FROM public.service_projects p
       JOIN public.organization o
         ON p.organization_id = o.organization_id
       WHERE p.project_id = $1;
