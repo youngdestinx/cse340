@@ -1,43 +1,51 @@
 
 <%- include('partials/header') %>
 <main>
-    <h1><%= project.title %></h1>
+    <div class="project-card">
+        <h1><%= project.title %></h1>
 
-    <p><strong>Description:</strong></p>
-    <p><%= project.description %></p>
+        <p><strong>Description:</strong></p>
+        <p><%= project.description %></p>
 
-    <p><strong>Date:</strong></p>
-    <p>
-    <%= new Date(project.date).toLocaleString('en-NG', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    }) %>
-    </p>
+        <p><strong>Date:</strong></p>
+        <p>
+        <%= new Date(project.date).toLocaleString('en-NG', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }) %>
+        </p>
 
-    <p><strong>Location:</strong></p>
-    <p><%= project.location %></p>
+        <p><strong>Location:</strong></p>
+        <p><%= project.location %></p>
 
-    <p><strong>Organization:</strong></p>
-    <p>
-    <a href="/organization/<%= project.organization_id %>">
-        <%= project.organization_name %>
-    </a>
-    </p>
-    
-    <h3>Categories</h3>
+        <p><strong>Organization:</strong></p>
+        <p>
+        <a href="/organization/<%= project.organization_id %>">
+            <%= project.organization_name %>
+        </a>
+        </p>
+    </div>
 
-    <ul>
-        <% categories.forEach(category => { %>
-            <li>
-                <a href="/category/<%= category.category_id %>">
-                    <%= category.name %>
-                </a>
-            </li>
-        <% }) %>
-    </ul>
-    <a href="/assign-categories/<%= project.project_id %>">Edit Categories</a>
+    <div class="project-categories">
+        <h3>Categories</h3>
+
+        <ul>
+            <% categories.forEach(category => { %>
+                <li>
+                    <a href="/category/<%= category.category_id %>">
+                        <%= category.name %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+
+        <div class="project-actions">
+            <a class="btn-primary" href="/assign-categories/<%= project.project_id %>">Edit Categories</a>
+            <a class="btn-primary" href="/edit-project/<%= project.project_id %>">Edit Project</a>
+        </div>
+    </div>
 </main>
 <%- include('partials/footer') %>
 

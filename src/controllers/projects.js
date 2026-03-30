@@ -5,6 +5,7 @@ import {
     getUpcomingProjects,
     getProjectDetails,
     createProject,
+    updateProject
 } from '../models/projects.js';
 
 import {  getCategoriesByProjectId } from '../models/categories.js';
@@ -104,6 +105,39 @@ const processNewProjectForm = async (req, res) => {
     }
 }
 
+const showEditProjectForm = async (req, res, next) => {
+    const { projectId } = req.params;
+
+    // Get project details
+    const project = await getProjectDetails(projectId);
+
+    // Get all organizations (for dropdown)
+    const organizations = await getAllOrganizations();
+
+    res.render('edit-project', {
+        title: 'Edit Project',
+        project,
+        organizations
+    });
+};
+
+const processEditProjectForm = async (req, res, next) => {
+    const { projectId } = req.params;
+
+    const { title, description, date, organization_id } = req.body;
+
+    // Update project
+    const updatedProject = await updateProject(projectId, {
+      title,
+      description,
+      date,
+      organization_id
+    });
+
+    // Redirect to project details page
+    res.redirect(`/project/${updatedProject.project_id}`);
+};
+
 
 export {
     projectsPage,
@@ -111,5 +145,7 @@ export {
     showProjectDetailsPage,
     showNewProjectForm,
     processNewProjectForm,
-    projectValidation
+    projectValidation,
+    showEditProjectForm,
+    processEditProjectForm
 };

@@ -1,7 +1,6 @@
 /* =========================
    GLOBAL RESET
 ========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -15,11 +14,9 @@ body {
     color: #333;
 }
 
-
 /* =========================
    NAVIGATION
 ========================= */
-
 nav {
     background-color: #0d2a52;
     padding: 1rem 2rem;
@@ -44,11 +41,9 @@ nav a:hover {
     color: #ffd166;
 }
 
-
 /* =========================
    MAIN CONTENT
 ========================= */
-
 main {
     max-width: 900px;
     margin: 3rem auto;
@@ -58,39 +53,100 @@ main {
 
 main h1 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     color: #0d2a52;
 }
 
-main h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+/* CATEGORY LIST STYLING */
+main ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+main ul li {
+    background: #ffffff;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    min-width: 200px;
+    text-align: center;
+}
+
+main ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+main ul li a {
+    text-decoration: none;
+    color: #0d2a52;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-primary {
+    display: inline-block;
+    background-color: #38bdf8;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0284c7;
+}
+
+/* =========================
+   FLASH MESSAGES
+========================= */
+.alert {
+    padding: 15px 20px;
+    margin: 20px auto;
+    border-radius: 6px;
+    max-width: 900px;
     font-weight: 500;
 }
 
-main p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    color: #555;
+/* SUCCESS / ERROR / INFO / WARNING */
+.alert.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
 }
 
-
-/* =========================
-   LOGO IMAGE
-========================= */
-
-.main-logo {
-    max-width: 350px;
-    width: 100%;
-    height: auto;
-    margin-top: 1rem;
+.alert.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
 }
 
+.alert.warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+}
+
+.alert.info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+}
 
 /* =========================
    FOOTER
 ========================= */
-
 footer {
     background-color: #0d2a52;
     color: white;
@@ -100,16 +156,12 @@ footer {
     font-size: 0.9rem;
 }
 
-
 /* =========================
    RESPONSIVE DESIGN
 ========================= */
-
 @media (max-width: 768px) {
-
     nav ul {
         flex-direction: column;
-        align-items: center;
         gap: 1rem;
     }
 
@@ -121,86 +173,245 @@ footer {
         font-size: 2rem;
     }
 
-    main h2 {
-        font-size: 1.3rem;
+    main ul li {
+        min-width: 100%;
     }
-
 }
 
 /* =========================
-   ORGANIZATION LIST
+   FORM STYLING
 ========================= */
 
-main ul {
-    list-style: none;
-    margin-top: 2rem;
-    padding: 0;
+form {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    text-align: left;
 }
 
-main ul li {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: white;
-    padding: 1rem 1.5rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    font-size: 1rem;
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
-main ul li strong {
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
     color: #0d2a52;
 }
 
-/* Organization logos */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
 
-main ul li img {
-    width: 60px;
-    height: auto;
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+/* Textarea specific */
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* BUTTONS (also works if you use <a> as button) */
+button,
+a.btn-primary {
+    display: inline-block;
+    background-color: #38bdf8;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover,
+a.btn-primary:hover {
+    background-color: #0284c7;
+    transform: translateY(-2px);
+}
+
+/* OPTIONAL: make <a> tag act like button easily */
+a.btn-primary {
+    text-align: center;
+}
+
+/* RESPONSIVE FORM */
+@media (max-width: 600px) {
+    form {
+        padding: 1.5rem;
+    }
 }
 
 /* =========================
-   RESPONSIVE IMPROVEMENT
+   PROJECT CARD
 ========================= */
+.project-card {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
 
+.project-card h1 {
+    color: #0d2a52;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.project-detail p {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.project-detail .label {
+    font-weight: 600;
+    color: #0d2a52;
+}
+
+/* CATEGORIES LIST */
+.project-categories {
+    margin-top: 2rem;
+}
+
+.project-categories h3 {
+    color: #0d2a52;
+    margin-bottom: 1rem;
+}
+
+.project-categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-categories ul li {
+    display: inline-block;
+    background: #e2f0ff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.project-categories ul li a {
+    text-decoration: none;
+    color: #0d2a52;
+    font-weight: 500;
+}
+
+.project-categories ul li:hover {
+    background: #38bdf8;
+    color: #ffffff;
+}
+
+.project-categories ul li a:hover {
+    color: #ffffff;
+}
+
+/* ACTION BUTTONS */
+.project-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-actions .btn-primary {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    background-color: #38bdf8;
+    transition: 0.3s ease;
+}
+
+.project-actions .btn-primary:hover {
+    background-color: #0284c7;
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
 @media (max-width: 600px) {
-
-    main ul li {
+    .project-actions {
         flex-direction: column;
-        text-align: center;
     }
 
-    main ul li img {
-        width: 80px;
+    .project-categories ul li {
+        display: block;
+        width: fit-content;
     }
-
 }
 
-/* Flash message styles */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
+/* =========================
+   CHECKBOXES / ASSIGN CATEGORIES
+========================= */
+.form-group div {
+    display: flex;
+    align-items: center;   /* vertically center checkbox & label */
+    gap: 10px;             /* spacing between checkbox and label */
+    margin-bottom: 0.8rem; /* spacing between each checkbox row */
 }
-.alert.success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
+
+.form-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #38bdf8; /* nice blue checkbox color in modern browsers */
+    cursor: pointer;
 }
-.alert.error {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+
+.form-group label {
+    font-size: 1rem;
+    color: #0d2a52;
+    font-weight: 500;
+    cursor: pointer;
 }
-.alert.warning {
-    color: #856404;
-    background-color: #fff3cd;
-    border-color: #ffeeba;
+
+/* Style submit button same as other buttons */
+button[type="submit"] {
+    margin-top: 1.5rem;
+    display: inline-block;
+    background-color: #38bdf8;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.alert.info {
-    color: #0c5460;
-    background-color: #d1ecf1;
-    border-color: #bee5eb;
+
+button[type="submit"]:hover {
+    background-color: #0284c7;
+    transform: translateY(-2px);
+}
+
+/* Responsive layout: stack checkboxes on small screens */
+@media (max-width: 600px) {
+    .form-group div {
+        flex-direction: row; /* still row for checkboxes, spacing managed */
+    }
 }
