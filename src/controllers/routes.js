@@ -32,6 +32,16 @@ import {
     DisplayEditCategoryForm
 } from './categories.js';
 
+import {
+    showUserRegistrationForm,
+    processUserRegistrationForm,
+    showLoginForm,
+    processLoginForm,
+    processLogout,
+    requireLogin,
+    showDashboard
+} from './users.js'
+
 import { testErrorPage } from './errors.js';
 
 
@@ -88,5 +98,16 @@ router.post('/new-category', categoryValidationRules, processCreateCategoryForm)
 
 router.get('/edit-category/:id', DisplayEditCategoryForm);
 router.post('/edit-category/:id', categoryValidationRules, processEditCategoryForm);
+
+// User registration routes
+router.get('/register', showUserRegistrationForm);
+router.post('/register', processUserRegistrationForm);
+
+// User login routes
+router.get('/login', showLoginForm);
+router.post('/login', processLoginForm);
+router.get('/logout', processLogout);
+
+router.get('/dashboard', requireLogin, showDashboard);
 
 export default router;
