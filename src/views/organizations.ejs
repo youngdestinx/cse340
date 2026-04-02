@@ -10,7 +10,11 @@
             <% }); %>
         </ul>
 
-        <p><a class="btn-primary" href="/new-organization">Add a new organization</a></p>
+        <p>
+            <% if (user && user.role_name === 'admin') { %>
+                <a class="btn-primary" href="/new-organization">Add New Organization</a>
+            <% } %>
+        </p>
         
 
     </main>

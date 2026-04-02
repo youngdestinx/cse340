@@ -42,8 +42,10 @@
         </ul>
 
         <div class="project-actions">
-            <a class="btn-primary" href="/assign-categories/<%= project.project_id %>">Edit Categories</a>
-            <a class="btn-primary" href="/edit-project/<%= project.project_id %>">Edit Project</a>
+            <% if (user && user.role_name === 'admin') { %>
+                <a class="btn-primary" href="/assign-categories/<%= project.project_id %>">Edit Project Categories</a>
+                <a class="btn-primary" href="/edit-project/<%= project.project_id %>">Edit Project</a>
+            <% } %>
         </div>
     </div>
 </main>

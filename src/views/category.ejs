@@ -13,6 +13,8 @@
             </li>
         <% }) %>
     </ul>
-    <a class="btn-primary" href="/edit-category/<%= category.category_id %>">Edit</a>
+    <% if (user && user.role_name === 'admin') { %>
+        <a class="btn-primary" href="/edit-category/<%= category.category_id %>">Edit Category</a>
+    <% } %>
 </main>
 <%- include('partials/footer') %>
