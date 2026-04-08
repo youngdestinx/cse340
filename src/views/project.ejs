@@ -46,6 +46,19 @@
                 <a class="btn-primary" href="/assign-categories/<%= project.project_id %>">Edit Project Categories</a>
                 <a class="btn-primary" href="/edit-project/<%= project.project_id %>">Edit Project</a>
             <% } %>
+
+            <% if (user) { %> <!-- Only logged-in users see this -->
+                <% if (userIsVolunteer) { %>
+                    <p>You are volunteering for this project.</p>
+                    <form action="/project/<%= project.project_id %>/unvolunteer" method="POST">
+                        <button type="submit" class="btn-primary">Remove Myself as Volunteer</button>
+                    </form>
+                <% } else { %>
+                    <form action="/project/<%= project.project_id %>/volunteer" method="POST">
+                        <button type="submit" class="btn-primary">Volunteer for this project</button>
+                    </form>
+                <% } %>
+            <% } %>
         </div>
     </div>
 </main>

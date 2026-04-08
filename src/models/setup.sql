@@ -167,3 +167,13 @@ UPDATE users SET role_id = (SELECT role_id FROM roles WHERE role_name = 'admin')
 
 -- Verify the update by listing all users and their roles
 SELECT users.user_id, users.email, roles.role_name FROM users JOIN roles ON users.role_id = roles.role_id;
+
+CREATE TABLE volunteers (
+    volunteer_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    project_id INT NOT NULL,
+    volunteered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (project_id) REFERENCES service_projects(project_id) ON DELETE CASCADE,
+    UNIQUE (user_id, project_id)
+);

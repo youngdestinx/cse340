@@ -12,6 +12,9 @@ import {  getCategoriesByProjectId } from '../models/categories.js';
 
 import { getAllOrganizations } from '../models/organization.js';
 
+import { isUserVolunteer } from '../models/volunteer.js';
+
+
 const projectValidation = [
     body('title')
         .trim()
@@ -55,17 +58,27 @@ const showProjectsPage = async (req, res) => {
 const showProjectDetailsPage = async (req, res) => {
     // Extract ID from URL
     const projectId = req.params.id;
+    const user = req.session.user;
 
     // Get project from database
     const project = await getProjectDetails(projectId);
     // Get category from database
     const categories = await getCategoriesByProjectId(projectId);
 
+    let userIsVolunteer = false;
+
+    // Only check if user is logged in
+    if (user) {
+        userIsVolunteer = await isUserVolunteer(user.user_id, projectId);
+     }
+
     // Render the project details page
     res.render('project', {
         title: project.title,
         project,
-        categories
+        categories,
+        user,
+        userIsVolunteer
     });
 };
 

@@ -7,6 +7,12 @@ import {
 
 } from '../models/users.js';
 
+import {
+    getUserProjects,
+    removeVolunteer
+} from '../models/volunteer.js';
+
+
 const showUserRegistrationForm = (req, res) => {
     res.render('register', { title: 'Register' });
 };
@@ -79,15 +85,32 @@ const requireLogin = (req, res, next) => {
     next();
 };
 
-const showDashboard = (req, res) => {
+const showDashboard = async (req, res) => {
     const user = req.session.user;
-    res.render('dashboard', { 
-        title: 'Dashboard',
-        name: user.name,
-        email: user.email,
-        role: user.role_name  
-    });
+
+    try {
+        const volunteerProjects = await getUserProjects(user.user_id);
+
+        res.render('dashboard', { 
+            title: 'Dashboard',
+            name: user.name,
+            email: user.email,
+            role: user.role_name,  
+            volunteerProjects 
+        });
+    } catch (error) {
+        console.error('Error loading volunteer projects:', error);
+        req.flash('error', 'Unable to load your volunteer projects.');
+        res.render('dashboard', {
+            title: 'Dashboard',
+            name: user.name,
+            email: user.email,
+            role: user.role_name,  
+            volunteerProjects: [] 
+        });
+    }
 };
+
 
 /**
  * Middleware factory to require specific role for route access
@@ -129,6 +152,8 @@ const showUsersPage = async (req, res) => {
         res.redirect('/dashboard');
     }
 };
+
+
 
 export {
     showUserRegistrationForm,

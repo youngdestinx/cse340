@@ -85,5 +85,5 @@ const getAllUsers = async () => {
 export {
     createUser,
     authenticateUser,
-    getAllUsers
+    getAllUsers,
 };

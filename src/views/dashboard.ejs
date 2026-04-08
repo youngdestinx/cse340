@@ -8,6 +8,27 @@
     <% if (role === 'admin') { %>
         <a class="btn-primary" href="/users">View All Users</a>
     <% } %>
+
+    <hr>
+
+    <h2>Your Volunteer Projects</h2>
+
+    <% if (!volunteerProjects || volunteerProjects.length === 0) { %>
+        <p>You are not volunteering for any projects yet.</p>
+    <% } else { %>
+        <ul>
+            <% volunteerProjects.forEach(project => { %>
+                <li>
+                    <a href="/project/<%= project.project_id %>"><%= project.title %></a>
+                    
+                    <!-- Remove Myself form -->
+                    <form action="/dashboard/unvolunteer/<%= project.project_id %>" method="POST" style="display:inline;">
+                        <button type="submit" class="btn-primary">Remove Myself</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
 </main>
 
 <%- include('partials/footer') %>

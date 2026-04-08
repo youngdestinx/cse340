@@ -44,6 +44,13 @@ import {
     requireRole
 } from './users.js'
 
+import {
+    projectDetail,
+    volunteerForProject,
+    removeVolunteerFromProject
+} from './volunteer.js';
+
+
 import { testErrorPage } from './errors.js';
 
 
@@ -113,5 +120,11 @@ router.get('/logout', processLogout);
 router.get('/dashboard', requireLogin, showDashboard);
 
 router.get('/users', requireLogin, requireRole('admin'), showUsersPage);
+
+router.get('/project/:id', projectDetail);
+
+// Protected routes: only logged-in users can add/remove volunteer
+router.post('/project/:id/volunteer', requireLogin, volunteerForProject);
+router.post('/project/:id/unvolunteer', requireLogin, removeVolunteerFromProject);
 
 export default router;
